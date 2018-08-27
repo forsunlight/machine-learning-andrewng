@@ -18,7 +18,18 @@ for iter = 1:num_iters
     %
 
 
-
+tempTheta = zeros(1, size(X, 2));
+    for j = 1:size(X, 2)
+      temp = 0;
+      for i=1:m
+        temp = (theta'*X(i, :)' - y(i))*X(i,j) + temp;
+      end
+      
+      tempTheta(j) = theta(j) - temp  * alpha / m;
+    end
+    for k = 1:size(X, 2)
+        theta(k) = tempTheta(k);
+    end
 
 
 
